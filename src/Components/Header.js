@@ -1,0 +1,40 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
+import Nav from './Nav';
+
+const Header = () => {
+  return (
+    <MainHeader>
+      <NavLink to="/" className={'logo-container'}>
+        <img src="./images/logo.jpg" className="logo" alt="my logo img" />
+        <span>Store</span>
+      </NavLink>
+      <Nav />
+    </MainHeader>
+  );
+};
+
+const MainHeader = styled.header`
+  padding: 0 4.8rem;
+  height: 10rem;
+  background-color: ${({ theme }) => theme.colors.bg};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  .logo-container {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    .logo {
+      height: 5rem;
+      border-radius: 3rem;
+    }
+    span {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+  }
+`;
+export default Header;

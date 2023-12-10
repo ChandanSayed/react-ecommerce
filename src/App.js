@@ -8,6 +8,7 @@ import SingleProduct from './Pages/SingleProduct';
 import Error from './Pages/Error';
 import { GlobalStyle } from './GlobalStyle';
 import { ThemeProvider } from 'styled-components';
+import Header from './Components/Header';
 
 const App = () => {
   const theme = {
@@ -37,6 +38,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <GlobalStyle />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
