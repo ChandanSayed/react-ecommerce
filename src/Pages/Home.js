@@ -1,15 +1,11 @@
-import styled from 'styled-components';
+import HeroSection from '../Components/HeroSection';
 
 const Home = () => {
   return (
-    <Wrapper>
-      <h2>Home</h2>
-    </Wrapper>
+    <>
+      <HeroSection name={'ES Store'} des={'Discover a curated collection of premium products at our online store. From trendy gadgets to timeless classics, find quality, style, and convenience in every purchase. Elevate your shopping experience today!'} />
+    </>
   );
 };
-
-const Wrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.bg};
-`;
 
 export default Home;

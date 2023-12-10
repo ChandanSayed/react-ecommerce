@@ -30,7 +30,7 @@ const App = () => {
     },
     media: {
       mobile: '768px',
-      tab: '998px'
+      tab: '1024px'
     }
   };
 
