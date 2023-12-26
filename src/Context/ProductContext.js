@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
   const getProducts = async () => {
     dispatch({ type: 'SET_LOADING' });
     try {
-      const res = await axios.get('https://api.pujakaitem.com/api/products');
+      const res = await axios.get('https://chandansayed.github.io/ChandanSayed/api/products.json');
       const products = await res.data;
       dispatch({ type: 'SET_API_DATA', payload: products });
     } catch (error) {
@@ -31,7 +31,7 @@ const AppProvider = ({ children }) => {
     getProducts();
   }, []);
 
-  return <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
 };
 
 // custom hooks
