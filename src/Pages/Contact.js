@@ -1,48 +1,24 @@
 import styled from 'styled-components';
 import { useForm, ValidationError } from '@formspree/react';
 import Swal from 'sweetalert2';
+import { useEffect, useCallback } from 'react';
 
 const Contact = () => {
   const [state, handleSubmit] = useForm('mpzvaenr');
-  if (state.succeeded) {
-    Swal.fire({
-      title: 'Good job!',
-      text: 'Form Submitted Successfully!',
-      icon: 'success'
-    });
-  }
-  const Wrapper = styled.section`
-    padding: 9rem 0 5rem 0;
-    text-align: center;
 
-    .container {
-      margin-top: 6rem;
-
-      .contact-form {
-        max-width: 50rem;
-        margin: auto;
-
-        .contact-inputs {
-          display: flex;
-          flex-direction: column;
-          gap: 3rem;
-
-          input[type='submit'] {
-            cursor: pointer;
-            transition: all 0.2s;
-
-            &:hover {
-              background-color: ${({ theme }) => theme.colors.white};
-              border: 1px solid ${({ theme }) => theme.colors.btn};
-              color: ${({ theme }) => theme.colors.btn};
-              transform: scale(0.9);
-              border-radius: 50px;
-            }
-          }
-        }
-      }
+  const handleSubmission = useCallback(() => {
+    if (state.succeeded) {
+      Swal.fire({
+        title: 'Good job!',
+        text: 'Form Submitted Successfully!',
+        icon: 'success'
+      });
     }
-  `;
+  }, [state.succeeded]);
+
+  useEffect(() => {
+    handleSubmission();
+  }, [handleSubmission]);
 
   return (
     <Wrapper>
@@ -55,15 +31,49 @@ const Contact = () => {
             <input type="text" id="Username" placeholder="Username" name="Username" autoComplete="off" required />
             <ValidationError prefix="Username" field="Username" errors={state.errors} />
             <input type="email" id="Email" name="Email" placeholder="Email" autoComplete="off" required />
-            <ValidationError prefix="Email" field="email" errors={state.errors} />
-            <textarea id="Message" name="Message" cols="30" rows="10" autoComplete="off" required placeholder="Enter you message"></textarea>
+            <ValidationError prefix="Email" field="Email" errors={state.errors} />
+            <textarea id="Message" name="Message" cols="30" rows="10" autoComplete="off" placeholder="Enter you message" required></textarea>
             <ValidationError prefix="Message" field="Message" errors={state.errors} />
             <input type="submit" value="send" />
+            {!state.succeeded ? <p style={{ color: 'red' }}>{state.errors?.formErrors[0].message}</p> : null}
           </form>
         </div>
       </div>
     </Wrapper>
   );
 };
+
+const Wrapper = styled.section`
+  padding: 9rem 0 5rem 0;
+  text-align: center;
+
+  .container {
+    margin-top: 6rem;
+
+    .contact-form {
+      max-width: 50rem;
+      margin: auto;
+
+      .contact-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        input[type='submit'] {
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: ${({ theme }) => theme.colors.white};
+            border: 1px solid ${({ theme }) => theme.colors.btn};
+            color: ${({ theme }) => theme.colors.btn};
+            transform: scale(0.9);
+            border-radius: 50px;
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default Contact;
