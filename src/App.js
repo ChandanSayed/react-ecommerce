@@ -9,6 +9,7 @@ import Error from './Pages/Error';
 import { GlobalStyle } from './GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import Header from './Components/Header';
+import Contact from './Pages/Contact';
 
 const App = () => {
   const theme = {
@@ -44,6 +45,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/products/single-products:/id" element={<SingleProduct />} />
           <Route path="*" element={<Error />} />
         </Routes>
