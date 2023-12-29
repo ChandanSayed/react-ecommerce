@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
   const getProducts = async () => {
     dispatch({ type: 'SET_LOADING' });
     try {
-      const res = await axios.get('https://chandansayed.github.io/ChandanSayed/api/products.json');
+      const res = await axios.get('https://api.pujakaitem.com/api/products');
       const products = await res.data;
       dispatch({ type: 'SET_API_DATA', payload: products });
     } catch (error) {
@@ -27,11 +27,22 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const getSingleProduct = async url => {
+    dispatch({ type: 'SET_SINGLE_LOADING' });
+    try {
+      const res = await axios.get(url);
+      const singleProduct = await res.data;
+      dispatch({ type: 'SET_SINGLE_PRODUCT', payload: singleProduct });
+    } catch (error) {
+      dispatch({ type: 'SET_SINGLE_ERROR' });
+    }
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
 
-  return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ ...state, getSingleProduct }}>{children}</AppContext.Provider>;
 };
 
 // custom hooks
