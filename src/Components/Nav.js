@@ -88,7 +88,8 @@ const Wrapper = styled.nav`
       }
 
       &:hover,
-      &:active {
+      &:active,
+      &.active {
         color: ${({ theme }) => theme.colors.helper};
       }
     }

@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../styles/Button';
@@ -6,69 +5,66 @@ import { FaDiscord, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <>
-      <Wrapper>
-        <div className="contact-short">
-          <div className="grid grid-two-column">
-            <div>
-              <h3>Ready to get started?</h3>
-              <h3>Talk to us today</h3>
-            </div>
-
-            <div>
-              <Button className="btn hireme-btn">
-                <NavLink to="/"> Get Started </NavLink>
-              </Button>
-            </div>
+    <Wrapper>
+      <div className="contact-short">
+        <div className="grid grid-two-column">
+          <div>
+            <h3>Ready to get started?</h3>
+            <h3>Talk to us today</h3>
+          </div>
+          <div>
+            <Button className="btn hireme-btn">
+              <NavLink to="/"> Get Started </NavLink>
+            </Button>
           </div>
         </div>
-        {/* footer section */}
+      </div>
+      {/* footer section */}
 
-        <footer>
-          <div className="container grid grid-four-column">
-            <div className="footer-about">
-              <h3>ES Store</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
-            </div>
-            <div className="footer-subscribe">
-              <h3>Subscribe to get important updates</h3>
-              <form action="#">
-                <input type="email" name="email" placeholder="YOUR E-MAIL" />
+      <footer>
+        <div className="container grid grid-four-column">
+          <div className="footer-about">
+            <h3>ES Store</h3>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+          </div>
+          <div className="footer-subscribe">
+            <h3>Subscribe to get important updates</h3>
+            <form action="#">
+              <input type="email" name="email" placeholder="YOUR E-MAIL" />
 
-                <input type="submit" value="subscribe" />
-              </form>
-            </div>
-            <div className="footer-social">
-              <h3>Follow Us</h3>
-              <div className="footer-social--icons">
-                <div>
-                  <FaDiscord className="icons" />
-                </div>
-                <div>
-                  <FaFacebookF className="icons" />
-                </div>
-                <div>
-                  <FaLinkedinIn className="icons" />
-                </div>
+              <input type="submit" value="subscribe" />
+            </form>
+          </div>
+          <div className="footer-social">
+            <h3>Follow Us</h3>
+            <div className="footer-social--icons">
+              <div>
+                <FaDiscord className="icons" />
+              </div>
+              <div>
+                <FaFacebookF className="icons" />
+              </div>
+              <div>
+                <FaLinkedinIn className="icons" />
               </div>
             </div>
-            <div className="footer-contact">
-              <h3>Call Us</h3>
-              <h3>
-                <a href="tel: +88 01727858499">+88 01727858499</a>
-              </h3>
-            </div>
           </div>
+          <div className="footer-contact">
+            <h3>Call Us</h3>
+            <h3>
+              <a href="tel: +88 01727858499">+88 01727858499</a>
+            </h3>
+          </div>
+        </div>
 
-          <div className="footer-bottom--section">
-            <hr />
-            <div className="container" style={{ textAlign: 'center' }}>
-              <p>@{new Date().getFullYear()} ES Developer(Chandan Sayed). All Rights Reserved</p>
-            </div>
+        <div className="footer-bottom--section">
+          <hr />
+          <div className="container" style={{ textAlign: 'center' }}>
+            <p>@{new Date().getFullYear()} ES Developer(Chandan Sayed). All Rights Reserved</p>
           </div>
-        </footer>
-      </Wrapper>
-    </>
+        </div>
+      </footer>
+    </Wrapper>
   );
 };
 
