@@ -74,6 +74,7 @@ const Wrapper = styled.section`
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       border-radius: 2rem;
+      z-index: 1;
     }
   }
 
@@ -86,7 +87,7 @@ const Wrapper = styled.section`
     }
 
     .card-data-flex {
-      margin: 2rem 0;
+      padding: 2rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;

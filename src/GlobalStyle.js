@@ -134,6 +134,7 @@ ${'' /* resuable code section  */}
       padding: 0.8rem 2rem;
       font-size: 1.2rem;
       border-radius: 2rem;
+      z-index: 1;
     }
 
 input, textarea{
