@@ -3,10 +3,13 @@ import { AiOutlineStar } from 'react-icons/ai';
 import styled from 'styled-components';
 
 const Star = ({ stars, reviews }) => {
+  function roundToNearestHalf(number) {
+    return Math.round(number * 2) / 2;
+  }
+  let roundedNum = roundToNearestHalf(stars);
   const ratingStar = Array.from({ length: 5 }, (elem, index) => {
     let number = index + 0.5;
-    // debugger;
-    return <span key={index}>{stars >= index + 1 ? <FaStar className="icon" /> : stars >= number ? <FaStarHalfAlt className="icon" /> : <AiOutlineStar className="icon" />}</span>;
+    return <span key={index}>{roundedNum >= index + 1 ? <FaStar className="icon" /> : roundedNum >= number ? <FaStarHalfAlt className="icon" /> : <AiOutlineStar className="icon" />}</span>;
   });
 
   return (
