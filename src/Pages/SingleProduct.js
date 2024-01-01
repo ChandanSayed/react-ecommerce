@@ -9,6 +9,7 @@ import FormatPrice from '../Helpers/FormatPrice';
 import ProductImage from '../Components/ProductImage';
 import { Container } from '../styles/Container';
 import Star from '../Components/Star';
+import AddToCart from '../Components/AddToCart';
 
 const SingleProduct = () => {
   const { getSingleProduct, isSingleLoading, singleProduct } = useProductContext();
@@ -84,6 +85,8 @@ const SingleProduct = () => {
                 Brand :<span> {company} </span>
               </p>
             </div>
+            <hr />
+            {stock > 0 && <AddToCart product={singleProduct} />}
           </div>
         </div>
       </Container>
