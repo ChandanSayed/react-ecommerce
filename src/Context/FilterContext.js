@@ -15,6 +15,16 @@ export const FilterContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(FilterReducer, initialState);
 
+  // to set the grid view
+  const setGridView = () => {
+    return dispatch({ type: 'SET_GRID_VIEW' });
+  };
+
+  // to set the list view
+  const setListView = () => {
+    return dispatch({ type: 'SET_LIST_VIEW' });
+  };
+
   useEffect(() => {
     dispatch({ type: 'LOAD_FILTER_PRODUCTS', payload: products });
   }, [products]);
@@ -22,7 +32,9 @@ export const FilterContextProvider = ({ children }) => {
   return (
     <FilterContext.Provider
       value={{
-        ...state
+        ...state,
+        setGridView,
+        setListView
       }}
     >
       {children}

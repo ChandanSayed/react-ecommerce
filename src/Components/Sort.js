@@ -1,7 +1,24 @@
+import React from 'react';
 import styled from 'styled-components';
+import { BsFillGridFill, BsList } from 'react-icons/bs';
+import { useFilterContext } from '../Context/FilterContext';
 
 const Sort = () => {
-  return <Wrapper className="sort-section">Sort</Wrapper>;
+  const { grid_view, setGridView, setListView } = useFilterContext();
+  return (
+    <Wrapper className="sort-section">
+      {/* 1st column  */}
+      <div className="sorting-list--grid">
+        <button className={grid_view ? 'active sort-btn' : 'sort-btn'} onClick={setGridView}>
+          <BsFillGridFill className="icon" />
+        </button>
+
+        <button className={!grid_view ? 'active sort-btn' : ' sort-btn'} onClick={setListView}>
+          <BsList className="icon" />
+        </button>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
