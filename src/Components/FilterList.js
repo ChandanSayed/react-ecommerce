@@ -1,7 +1,21 @@
 import styled from 'styled-components';
+import { useFilterContext } from '../Context/FilterContext';
 
 const FilterList = () => {
-  return <Wrapper>Filter List</Wrapper>;
+  const {
+    filters: { text },
+    updateFiltersValue
+  } = useFilterContext();
+
+  return (
+    <Wrapper>
+      <div className="filter-search">
+        <form onSubmit={e => e.preventDefault()}>
+          <input type="text" name="text" placeholder="Search" value={text} onChange={updateFiltersValue} />
+        </form>
+      </div>
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.section`
