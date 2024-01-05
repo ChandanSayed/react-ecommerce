@@ -4,8 +4,21 @@ import { useFilterContext } from '../Context/FilterContext';
 const FilterList = () => {
   const {
     filters: { text },
+    all_products,
     updateFiltersValue
   } = useFilterContext();
+
+  // get the unique values of each property
+  const getUniqueData = (data, attr) => {
+    let newVal = data.map(curElem => {
+      return curElem[attr];
+    });
+
+    return (newVal = ['all', ...new Set(newVal)]);
+  };
+
+  // we need to have the individual data of each in an array format
+  const categoryData = getUniqueData(all_products, 'category');
 
   return (
     <Wrapper>
@@ -13,6 +26,18 @@ const FilterList = () => {
         <form onSubmit={e => e.preventDefault()}>
           <input type="text" name="text" placeholder="Search" value={text} onChange={updateFiltersValue} />
         </form>
+      </div>
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {categoryData.map((curElem, index) => {
+            return (
+              <button key={index} type="button" name="category" value={curElem} onClick={updateFiltersValue}>
+                {curElem}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </Wrapper>
   );
