@@ -19,6 +19,7 @@ const FilterList = () => {
 
   // we need to have the individual data of each in an array format
   const categoryData = getUniqueData(all_products, 'category');
+  const companyData = getUniqueData(all_products, 'company');
 
   return (
     <Wrapper>
@@ -38,6 +39,21 @@ const FilterList = () => {
             );
           })}
         </div>
+      </div>
+      <div className="filter-company">
+        <h3>Brand</h3>
+
+        <form action="#">
+          <select name="company" id="company" className="filter-company--select" onClick={updateFiltersValue}>
+            {companyData.map((curElem, index) => {
+              return (
+                <option key={index} value={curElem} name="company">
+                  {curElem}
+                </option>
+              );
+            })}
+          </select>
+        </form>
       </div>
     </Wrapper>
   );
