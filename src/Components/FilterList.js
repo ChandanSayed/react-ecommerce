@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import { FaCheck } from 'react-icons/fa';
 import { useFilterContext } from '../Context/FilterContext';
 import FormatPrice from '../Helpers/FormatPrice';
+import { Button } from '../styles/Button';
 
 const FilterList = () => {
   const {
     filters: { text, color, price, maxPrice, minPrice },
     all_products,
-    updateFiltersValue
+    updateFiltersValue,
+    clearFilters
   } = useFilterContext();
 
   // get the unique values of each property
@@ -89,6 +91,11 @@ const FilterList = () => {
           <FormatPrice price={price} />
         </p>
         <input type="range" name="price" min={minPrice} max={maxPrice} value={price} onChange={updateFiltersValue} />
+      </div>
+      <div className="filter-clear">
+        <Button className="btn" onClick={clearFilters}>
+          Clear Filters
+        </Button>
       </div>
     </Wrapper>
   );

@@ -97,16 +97,29 @@ const FilterReducer = (state, action) => {
       }
 
       if (price === 0) {
-        tempFilterProduct = tempFilterProduct.filter(curElem => curElem.price == price);
+        tempFilterProduct = tempFilterProduct.filter(curElem => curElem.price === price);
       } else {
         tempFilterProduct = tempFilterProduct.filter(curElem => curElem.price <= price);
       }
 
-      console.log(all_products);
-
       return {
         ...state,
         filter_products: tempFilterProduct
+      };
+
+    case 'CLEAR_FILTERS':
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: '',
+          category: 'all',
+          company: 'all',
+          color: 'all',
+          maxPrice: state.filters.maxPrice,
+          price: state.filters.maxPrice,
+          minPrice: 0
+        }
       };
 
     default:
