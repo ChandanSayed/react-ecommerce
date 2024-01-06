@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import { FaCheck } from 'react-icons/fa';
 import { useFilterContext } from '../Context/FilterContext';
 
 const FilterList = () => {
   const {
-    filters: { text },
+    filters: { text, color },
     all_products,
-    color,
     updateFiltersValue
   } = useFilterContext();
 
@@ -27,7 +27,6 @@ const FilterList = () => {
   const categoryData = getUniqueData(all_products, 'category');
   const companyData = getUniqueData(all_products, 'company');
   const colorsData = getUniqueData(all_products, 'colors');
-  console.log(colorsData, categoryData);
 
   return (
     <Wrapper>
