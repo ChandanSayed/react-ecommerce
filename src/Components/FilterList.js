@@ -5,6 +5,7 @@ const FilterList = () => {
   const {
     filters: { text },
     all_products,
+    color,
     updateFiltersValue
   } = useFilterContext();
 
@@ -15,7 +16,8 @@ const FilterList = () => {
     });
 
     if (attr === 'colors') {
-      return (newVal = ['All', ...new Set([].concat(...newVal))]);
+      // return (newVal = ['All', ...new Set([].concat(...newVal))]);
+      newVal = newVal.flat();
     }
 
     return (newVal = ['all', ...new Set(newVal)]);
@@ -25,7 +27,7 @@ const FilterList = () => {
   const categoryData = getUniqueData(all_products, 'category');
   const companyData = getUniqueData(all_products, 'company');
   const colorsData = getUniqueData(all_products, 'colors');
-  console.log(colorsData);
+  console.log(colorsData, categoryData);
 
   return (
     <Wrapper>
@@ -60,6 +62,26 @@ const FilterList = () => {
             })}
           </select>
         </form>
+      </div>
+      <div className="filter-colors colors">
+        <h3>Colors</h3>
+
+        <div className="filter-color-style">
+          {colorsData.map((curColor, index) => {
+            if (curColor === 'all') {
+              return (
+                <button key={index} type="button" value={curColor} name="color" className="color-all--style" onClick={updateFiltersValue}>
+                  all
+                </button>
+              );
+            }
+            return (
+              <button key={index} type="button" value={curColor} name="color" style={{ backgroundColor: curColor }} className={color === curColor ? 'btnStyle active' : 'btnStyle'} onClick={updateFiltersValue}>
+                {color === curColor ? <FaCheck className="checkStyle" /> : null}
+              </button>
+            );
+          })}
+        </div>
       </div>
     </Wrapper>
   );
