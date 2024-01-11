@@ -5,8 +5,16 @@ import CartItem from '../Components/CartItem';
 import { useCartContext } from '../Context/CartContext';
 
 const Cart = () => {
-  const { cart } = useCartContext();
-  console.log(cart);
+  const { cart, clearCart } = useCartContext();
+
+  if (cart.length === 0) {
+    return (
+      <EmptyDiv>
+        <h3>No Cart in Item </h3>
+      </EmptyDiv>
+    );
+  }
+
   return (
     <Wrapper>
       <div className="container">
@@ -28,7 +36,9 @@ const Cart = () => {
           <NavLink to="/products">
             <Button> continue Shopping </Button>
           </NavLink>
-          <Button className="btn btn-clear">clear cart</Button>
+          <Button className="btn btn-clear" onClick={clearCart}>
+            clear cart
+          </Button>
         </div>
 
         {/* order total_amount */}
@@ -53,6 +63,18 @@ const Cart = () => {
     </Wrapper>
   );
 };
+
+const EmptyDiv = styled.div`
+  display: grid;
+  place-items: center;
+  height: 50vh;
+
+  h3 {
+    font-size: 4.2rem;
+    text-transform: capitalize;
+    font-weight: 300;
+  }
+`;
 
 const Wrapper = styled.section`
   padding: 9rem 0;

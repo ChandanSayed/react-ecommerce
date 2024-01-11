@@ -26,6 +26,12 @@ const CartReducer = (state, action) => {
       cart: updatedCart
     };
   }
+  if (action.type === 'CLEAR_CART') {
+    return {
+      ...state,
+      cart: []
+    };
+  }
 };
 export default CartReducer;
 
