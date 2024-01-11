@@ -98,6 +98,22 @@ const CartReducer = (state, action) => {
       total_item: updatedItemVal
     };
   }
+
+  if (action.type === 'CART_TOTAL_PRICE') {
+    let total_price = state.cart.reduce((initialVal, curElem) => {
+      let { price, amount } = curElem;
+
+      initialVal = initialVal + price * amount;
+
+      return initialVal;
+    }, 0);
+
+    return {
+      ...state,
+      total_price
+    };
+  }
+
   if (action.type === 'REMOVE_ITEM') {
     let updatedCart = state.cart.filter(curItem => curItem.id !== action.payload);
     return {

@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { Button } from '../styles/Button';
 import CartItem from '../Components/CartItem';
 import { useCartContext } from '../Context/CartContext';
+import FormatPrice from '../Helpers/FormatPrice';
 
 const Cart = () => {
-  const { cart, clearCart } = useCartContext();
+  const { cart, clearCart, total_price, shipping_fee } = useCartContext();
 
   if (cart.length === 0) {
     return (
@@ -45,16 +46,22 @@ const Cart = () => {
         <div className="order-total--amount">
           <div className="order-total--subdata">
             <div>
-              <p>subtotal:</p>
+              <p>
+                subtotal: <FormatPrice price={total_price} />
+              </p>
               <p></p>
             </div>
             <div>
-              <p>shipping fee:</p>
+              <p>
+                shipping fee: <FormatPrice price={shipping_fee} />
+              </p>
               <p></p>
             </div>
             <hr />
             <div>
-              <p>order total:</p>
+              <p>
+                order total: <FormatPrice price={total_price + shipping_fee} />{' '}
+              </p>
               <p></p>
             </div>
           </div>
