@@ -4,7 +4,7 @@ import CartReducer from '../Reducer/CartReducer';
 const CartContext = createContext();
 const getCartDate = () => {
   const isAvailable = localStorage.getItem('cart');
-  if (isAvailable == []) {
+  if (!isAvailable) {
     return [];
   } else {
     return JSON.parse(localStorage.getItem('cart'));
@@ -23,6 +23,17 @@ const CartProvider = ({ children }) => {
   const addToCart = (id, color, amount, product) => {
     dispatch({ type: 'ADD_TO_CART', payload: { id, color, amount, product } });
   };
+
+  // increment and decrement the product
+
+  const decrement = id => {
+    dispatch({ type: 'SET_DECREMENT', payload: id });
+  };
+
+  const increment = id => {
+    dispatch({ type: 'SET_INCREMENT', payload: id });
+  };
+
   const removeItem = id => {
     dispatch({ type: 'REMOVE_ITEM', payload: id });
   };
@@ -31,7 +42,10 @@ const CartProvider = ({ children }) => {
     dispatch({ type: 'CLEAR_CART' });
   };
 
-  useEffect(() => localStorage.setItem('cart', JSON.stringify(state.cart)), [state.cart]);
+  useEffect(() => {
+    dispatch({ type: 'CART_TOTAL_ITEM' });
+    localStorage.setItem('cart', JSON.stringify(state.cart));
+  }, [state.cart]);
 
   return (
     <CartContext.Provider
@@ -39,7 +53,9 @@ const CartProvider = ({ children }) => {
         ...state,
         addToCart,
         removeItem,
-        clearCart
+        clearCart,
+        increment,
+        decrement
       }}
     >
       {children}
