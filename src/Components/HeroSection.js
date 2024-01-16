@@ -7,7 +7,7 @@ const HeroSection = ({ name, des }) => {
     <Wrapper>
       <div className="container">
         <div className="grid grid-two-column">
-          <div className="hero-section-data">
+          <div className="hero-section-data" data-aos="fade-up">
             <p className="intro-data">Welcome to </p>
             <h1> {name} </h1>
             <p>{des}</p>
@@ -15,7 +15,7 @@ const HeroSection = ({ name, des }) => {
               <Button>show now</Button>
             </NavLink>
           </div>
-          <div className="hero-section-image">
+          <div className="hero-section-image" data-aos="fade-up">
             <figure>
               <img src="images/hero.jpg" alt="hero-section" className="img-style" />
             </figure>
